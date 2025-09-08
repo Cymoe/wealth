@@ -3,18 +3,18 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import styles from "./test.module.css";
-import { QUIZ_QUESTIONS, calculateWealthArchetype } from "@/lib/quiz-questions";
+import styles from "./priorities.module.css";
+import { PRIORITY_QUESTIONS, calculatePriorities } from "@/lib/priorities-questions";
 import { QuizStorage } from "@/lib/quiz-storage";
 
-export default function TestPage() {
+export default function PrioritiesQuizPage() {
   const router = useRouter();
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState<Record<number, number>>({});
+  const [answers, setAnswers] = useState<Record<string, number>>({});
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
 
-  const question = QUIZ_QUESTIONS[currentQuestion];
-  const progress = ((currentQuestion + 1) / QUIZ_QUESTIONS.length) * 100;
+  const question = PRIORITY_QUESTIONS[currentQuestion];
+  const progress = ((currentQuestion + 1) / PRIORITY_QUESTIONS.length) * 100;
 
   const handleAnswer = (optionIndex: number) => {
     setSelectedOption(optionIndex);
@@ -25,13 +25,13 @@ export default function TestPage() {
       const newAnswers = { ...answers, [question.id]: selectedOption };
       setAnswers(newAnswers);
 
-      if (currentQuestion < QUIZ_QUESTIONS.length - 1) {
+      if (currentQuestion < PRIORITY_QUESTIONS.length - 1) {
         setCurrentQuestion(currentQuestion + 1);
         setSelectedOption(null);
       } else {
-        const archetype = calculateWealthArchetype(newAnswers);
-        QuizStorage.savePersonalityResult(archetype);
-        router.push(`/results/${archetype}`);
+        const results = calculatePriorities(newAnswers);
+        QuizStorage.savePriorityResult(results.profile, results.scores);
+        router.push(`/priorities-results/${results.profile}`);
       }
     }
   };
@@ -39,7 +39,7 @@ export default function TestPage() {
   const handleBack = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
-      const prevQuestionId = QUIZ_QUESTIONS[currentQuestion - 1].id;
+      const prevQuestionId = PRIORITY_QUESTIONS[currentQuestion - 1].id;
       setSelectedOption(answers[prevQuestionId] ?? null);
     }
   };
@@ -65,10 +65,19 @@ export default function TestPage() {
             </div>
             <span className={styles.logoText}>WealthArchetypes</span>
           </Link>
+          <div className={styles.navLinks}>
+            <Link href="/test">Personality Test</Link>
+            <Link href="/types">All Types</Link>
+          </div>
         </div>
       </nav>
 
       <div className={styles.quizContainer}>
+        <div className={styles.quizHeader}>
+          <h1>Wealth Priorities Assessment</h1>
+          <p>Discover what matters most in your wealth journey</p>
+        </div>
+
         <div className={styles.progressBar}>
           <div 
             className={styles.progressFill} 
@@ -78,13 +87,13 @@ export default function TestPage() {
 
         <div className={styles.questionSection}>
           <div className={styles.questionNumber}>
-            Question {currentQuestion + 1} of {QUIZ_QUESTIONS.length}
+            Question {currentQuestion + 1} of {PRIORITY_QUESTIONS.length}
           </div>
 
-          <h2 className={styles.questionText}>{question.text}</h2>
+          <h2 className={styles.questionText}>{question.question}</h2>
 
           <div className={styles.optionsGrid}>
-            {question.options.map((option, index) => (
+            {question.answers.map((answer, index) => (
               <button
                 key={index}
                 className={`${styles.optionButton} ${
@@ -92,7 +101,7 @@ export default function TestPage() {
                 }`}
                 onClick={() => handleAnswer(index)}
               >
-                {option.text}
+                {answer.text}
               </button>
             ))}
           </div>
@@ -111,7 +120,7 @@ export default function TestPage() {
               onClick={handleNext}
               disabled={selectedOption === null}
             >
-              {currentQuestion === QUIZ_QUESTIONS.length - 1 ? "See Results" : "Next"}
+              {currentQuestion === PRIORITY_QUESTIONS.length - 1 ? "See Results" : "Next"}
             </button>
           </div>
         </div>

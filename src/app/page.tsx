@@ -24,23 +24,29 @@ export default function Home() {
             <span className={styles.logoText}>WealthArchetypes</span>
           </div>
           <div className={styles.navLinks}>
-            <Link href="/test">Wealth Test</Link>
-            <Link href="/types">Wealth Types</Link>
+            <Link href="/test">Personality Test</Link>
+            <Link href="/priorities">Priorities Test</Link>
+            <Link href="/types">All Types</Link>
           </div>
         </div>
       </nav>
 
       <section className={styles.hero}>
         <h1 className={styles.heroTitle}>
-          &ldquo;It&apos;s so incredible to finally understand your wealth mindset.&rdquo;
+          &ldquo;Discover both WHO you are and WHAT you want in wealth.&rdquo;
         </h1>
         <p className={styles.heroDescription}>
-          Only 10 minutes to get a &ldquo;freakishly accurate&rdquo; description of your wealth personality
-          and why you handle money the way you do.
+          Two powerful assessments that reveal your wealth personality and priorities.
+          Understand not just how you think about money, but what truly matters to you.
         </p>
-        <Link href="/test" className={styles.ctaButton}>
-          Take the Test
-        </Link>
+        <div className={styles.ctaButtons}>
+          <Link href="/test" className={styles.ctaButton}>
+            Personality Test
+          </Link>
+          <Link href="/priorities" className={styles.ctaButtonSecondary}>
+            Priorities Test
+          </Link>
+        </div>
       </section>
 
       <section className={styles.stats}>
@@ -65,17 +71,31 @@ export default function Home() {
       </section>
 
       <section className={styles.features}>
-        <div className={styles.featureCard}>
-          <h2>Wealth Personality Types</h2>
-          <h3>Understand Your Financial DNA</h3>
-          <p>
-            In our comprehensive type descriptions, you&apos;ll discover what truly drives your
-            financial decisions, your natural wealth-building strengths, and the blind spots
-            that might be holding you back.
-          </p>
-          <Link href="/types" className={styles.featureLink}>
-            Explore Wealth Types →
-          </Link>
+        <div className={styles.featuresGrid}>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}>🧬</div>
+            <h2>Wealth Personality</h2>
+            <h3>Understand Your Financial DNA</h3>
+            <p>
+              Discover your natural wealth-building strengths, decision-making patterns,
+              and the blind spots that might be holding you back.
+            </p>
+            <Link href="/test" className={styles.featureLink}>
+              Take Personality Test →
+            </Link>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}>🎯</div>
+            <h2>Wealth Priorities</h2>
+            <h3>Define What Matters Most</h3>
+            <p>
+              Uncover whether you prioritize capital accumulation, time freedom,
+              or location independence in your wealth journey.
+            </p>
+            <Link href="/priorities" className={styles.featureLink}>
+              Take Priorities Test →
+            </Link>
+          </div>
         </div>
       </section>
 

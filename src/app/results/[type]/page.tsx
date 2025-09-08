@@ -1,9 +1,27 @@
+"use client";
+
 import Link from "next/link";
 import { WEALTH_ARCHETYPES } from "@/lib/wealth-archetypes";
 import styles from "./results.module.css";
+import { QuizStorage } from "@/lib/quiz-storage";
+import { useEffect, useState } from "react";
 
-export default async function ResultsPage({ params }: { params: Promise<{ type: string }> }) {
-  const { type } = await params;
+export default function ResultsPage({ params }: { params: Promise<{ type: string }> }) {
+  const [type, setType] = useState<string>("");
+  const [hasPriorities, setHasPriorities] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    params.then(p => {
+      setType(p.type);
+      setIsLoading(false);
+    });
+    const results = QuizStorage.getResults();
+    setHasPriorities(!!results.priorities);
+  }, [params]);
+
+  if (isLoading) return null;
+  
   const archetype = WEALTH_ARCHETYPES[type];
 
   if (!archetype) {
@@ -108,12 +126,25 @@ export default async function ResultsPage({ params }: { params: Promise<{ type: 
         </div>
 
         <div className={styles.actions}>
-          <Link href={`/types/${archetype.code}`} className={styles.primaryButton}>
-            Read Full Description
-          </Link>
-          <Link href="/types" className={styles.secondaryButton}>
-            Explore All Types
-          </Link>
+          {!hasPriorities ? (
+            <>
+              <Link href="/priorities" className={styles.primaryButton}>
+                Complete Your Profile - Take Priorities Test
+              </Link>
+              <Link href={`/types/${archetype.code}`} className={styles.secondaryButton}>
+                Read Full Description
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link href="/profile" className={styles.primaryButton}>
+                View Complete Profile
+              </Link>
+              <Link href={`/types/${archetype.code}`} className={styles.secondaryButton}>
+                Read Full Description
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </main>

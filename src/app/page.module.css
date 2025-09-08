@@ -98,21 +98,44 @@
   margin-bottom: 2rem;
 }
 
-.ctaButton {
+.ctaButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ctaButton,
+.ctaButtonSecondary {
   display: inline-block;
-  background: #9B5DE5;
-  color: white;
   padding: 1rem 2.5rem;
   border-radius: 50px;
   text-decoration: none;
   font-weight: 600;
   font-size: 1.1rem;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.ctaButton {
+  background: #9B5DE5;
+  color: white;
 }
 
 .ctaButton:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 30px rgba(155, 93, 229, 0.3);
+}
+
+.ctaButtonSecondary {
+  background: transparent;
+  color: var(--foreground);
+  border: 2px solid rgba(var(--foreground-rgb), 0.2);
+}
+
+.ctaButtonSecondary:hover {
+  transform: translateY(-2px);
+  border-color: #9B5DE5;
+  box-shadow: 0 10px 30px rgba(155, 93, 229, 0.1);
 }
 
 .stats {
@@ -152,8 +175,14 @@
 
 .features {
   padding: 4rem 2rem;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
 }
 
 .featureCard {
@@ -169,20 +198,24 @@
   }
 }
 
+.featureIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
 .featureCard h2 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   margin-bottom: 0.5rem;
 }
 
 .featureCard h3 {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   color: rgba(var(--foreground-rgb), 0.7);
   font-weight: 500;
   margin-bottom: 1.5rem;
 }
 
 .featureCard p {
-  max-width: 600px;
   margin: 0 auto 2rem;
   line-height: 1.6;
   color: rgba(var(--foreground-rgb), 0.8);
@@ -311,5 +344,9 @@
 
   .statNumber {
     font-size: 2rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
   }
 }

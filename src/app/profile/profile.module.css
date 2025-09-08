@@ -1,0 +1,402 @@
+.main {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  z-index: 100;
+}
+
+@media (prefers-color-scheme: dark) {
+  .nav {
+    background: rgba(20, 20, 20, 0.98);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
+
+.navContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  font-size: 1.25rem;
+  text-decoration: none;
+  color: var(--foreground);
+}
+
+.logoIcon {
+  width: 48px;
+  height: 48px;
+  position: relative;
+}
+
+.dotsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  padding: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.logoText {
+  color: var(--foreground);
+}
+
+.navLinks {
+  display: flex;
+  gap: 2rem;
+}
+
+.navLinks a {
+  color: var(--foreground);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.navLinks a:hover {
+  opacity: 0.7;
+}
+
+.profileContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 2rem 4rem;
+}
+
+.profileHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.profileHeader h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #9B5DE5 0%, #00BBF9 50%, #FFD700 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: rgba(var(--foreground-rgb), 0.7);
+}
+
+.profileGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.personalityCard,
+.priorityCard {
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 20px;
+  padding: 2.5rem;
+  position: relative;
+}
+
+@media (prefers-color-scheme: dark) {
+  .personalityCard,
+  .priorityCard {
+    background: rgba(255, 255, 255, 0.02);
+  }
+}
+
+.roleTag {
+  display: inline-block;
+  color: white;
+  padding: 0.375rem 1rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.personalityCard h2,
+.priorityCard h2 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.typeCode {
+  font-size: 1.125rem;
+  color: rgba(var(--foreground-rgb), 0.6);
+  margin-bottom: 1rem;
+}
+
+.description {
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: rgba(var(--foreground-rgb), 0.85);
+}
+
+.learnMore {
+  color: #9B5DE5;
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.learnMore:hover {
+  opacity: 0.8;
+}
+
+.priorityIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.tagline {
+  font-style: italic;
+  color: rgba(var(--foreground-rgb), 0.7);
+  margin-bottom: 2rem;
+}
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.pillar {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .pillar {
+    background: rgba(255, 255, 255, 0.02);
+  }
+}
+
+.pillarIcon {
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.pillarName {
+  display: block;
+  font-size: 0.875rem;
+  color: rgba(var(--foreground-rgb), 0.7);
+  margin-bottom: 0.25rem;
+}
+
+.pillarValue {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.insightsSection {
+  margin-bottom: 4rem;
+}
+
+.insightsSection h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.blueprintIntro {
+  text-align: center;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  color: rgba(var(--foreground-rgb), 0.85);
+}
+
+.insightsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.insightCard {
+  background: linear-gradient(135deg, rgba(155, 93, 229, 0.05), rgba(0, 187, 249, 0.05));
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.insightCard h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.insightCard p {
+  color: rgba(var(--foreground-rgb), 0.7);
+  margin-bottom: 1rem;
+}
+
+.insightCard ul {
+  list-style: none;
+  padding: 0;
+}
+
+.insightCard li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: rgba(var(--foreground-rgb), 0.85);
+}
+
+.insightCard li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+}
+
+.recommendationsSection {
+  margin-bottom: 4rem;
+}
+
+.recommendationsSection h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.recommendationsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.recommendationCard {
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  .recommendationCard {
+    background: rgba(255, 255, 255, 0.02);
+  }
+}
+
+.recommendationCard h4 {
+  font-size: 1.125rem;
+  margin-bottom: 0.75rem;
+  color: #9B5DE5;
+}
+
+.recommendationCard p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(var(--foreground-rgb), 0.8);
+}
+
+.profileFooter {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(var(--foreground-rgb), 0.1);
+}
+
+.profileFooter p {
+  color: rgba(var(--foreground-rgb), 0.6);
+  margin-bottom: 1rem;
+}
+
+.footerActions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.clearButton {
+  background: transparent;
+  color: rgba(var(--foreground-rgb), 0.6);
+  border: 1px solid rgba(var(--foreground-rgb), 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clearButton:hover {
+  color: var(--foreground);
+  border-color: rgba(var(--foreground-rgb), 0.4);
+}
+
+@media (max-width: 968px) {
+  .profileGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .insightsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .profileContainer {
+    padding: 100px 1rem 3rem;
+  }
+
+  .profileHeader h1 {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+
+  .pillars {
+    grid-template-columns: 1fr;
+  }
+
+  .recommendationsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .logo {
+    font-size: 1.1rem;
+  }
+
+  .logoIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .dotsGrid {
+    padding: 6px;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+  }
+}
