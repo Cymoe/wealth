@@ -1,0 +1,335 @@
+.main {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  z-index: 100;
+}
+
+@media (prefers-color-scheme: dark) {
+  .nav {
+    background: rgba(20, 20, 20, 0.98);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
+
+.navContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  font-size: 1.25rem;
+  text-decoration: none;
+  color: var(--foreground);
+}
+
+.logoIcon {
+  width: 48px;
+  height: 48px;
+  position: relative;
+}
+
+.dotsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  padding: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.logoText {
+  color: var(--foreground);
+}
+
+.navLinks {
+  display: flex;
+  gap: 2rem;
+}
+
+.navLinks a {
+  color: var(--foreground);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.navLinks a:hover {
+  opacity: 0.7;
+}
+
+.error {
+  text-align: center;
+  padding: 10rem 2rem;
+}
+
+.error h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.error p {
+  margin-bottom: 2rem;
+  color: rgba(var(--foreground-rgb), 0.7);
+}
+
+.retakeButton {
+  display: inline-block;
+  background: #9B5DE5;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.resultsContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 120px 2rem 4rem;
+}
+
+.resultsHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.roleIndicator {
+  display: inline-block;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.archetypeName {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+}
+
+.archetypeCode {
+  font-size: 1.25rem;
+  color: rgba(var(--foreground-rgb), 0.6);
+  font-weight: 500;
+}
+
+.description {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.description p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: rgba(var(--foreground-rgb), 0.8);
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.detailCard {
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .detailCard {
+    background: rgba(255, 255, 255, 0.02);
+  }
+}
+
+.detailCard h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.detailCard ul {
+  list-style: none;
+  padding: 0;
+}
+
+.detailCard li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: rgba(var(--foreground-rgb), 0.8);
+}
+
+.detailCard li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #9B5DE5;
+  font-weight: 700;
+}
+
+.roleInfo {
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 4rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .roleInfo {
+    background: rgba(255, 255, 255, 0.02);
+  }
+}
+
+.roleInfo h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.roleInfo > p {
+  color: rgba(var(--foreground-rgb), 0.8);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.otherTypes h4 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: rgba(var(--foreground-rgb), 0.7);
+}
+
+.typeLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.typeLink {
+  padding: 0.5rem 1rem;
+  border: 2px solid;
+  border-radius: 50px;
+  text-decoration: none;
+  color: var(--foreground);
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.typeLink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.primaryButton,
+.secondaryButton {
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.primaryButton {
+  background: #9B5DE5;
+  color: white;
+}
+
+.primaryButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(155, 93, 229, 0.3);
+}
+
+.secondaryButton {
+  background: transparent;
+  color: var(--foreground);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .secondaryButton {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.secondaryButton:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+  .secondaryButton:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+@media (max-width: 768px) {
+  .resultsContainer {
+    padding: 100px 1rem 3rem;
+  }
+
+  .archetypeName {
+    font-size: 2rem;
+  }
+
+  .description p {
+    font-size: 1.1rem;
+  }
+
+  .detailsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .logo {
+    font-size: 1.1rem;
+  }
+
+  .logoIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .dotsGrid {
+    padding: 6px;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+  }
+}
